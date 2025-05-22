@@ -3,12 +3,12 @@ import { AppContext } from '../Context/AppContext'
 import { assets } from '../assets/assets'
 // import { assets } from '../assets/assets'
 const JobListing = () => {
-    const {isSearched , searchFilter} = useContext(AppContext)
+    const {isSearched , searchFilter , setSearchFilter} = useContext(AppContext)
 
 
 
   return (
-    <div>
+    <div  className='container 2xl: px-20 mx-auto flex flex-col lg:flex-row  max-lg:space-y-8  py-8 '>
 
 
       {/* create  side bar */}
@@ -24,14 +24,14 @@ const JobListing = () => {
                         {searchFilter.title && (
                             <span>
                                 {searchFilter.title}
-                                <img  className = "cursor-pointer" src = {assets.cross_icon} alt="" /> 
+                                <img onClick= {e => setSearchFilter(prev => ({...prev , title:""}))} className = "cursor-pointer" src = {assets.cross_icon} alt="" /> 
                                 
                             </span>
                         )}{
                             searchFilter.location && (
                                 <span>
                                 {searchFilter.location}
-                                <img  className = "cursor-pointer" src = {assets.cross_icon} alt="" /> 
+                                <img onClick= {e => setSearchFilter(prev => ({...prev , location:""}))} className = "cursor-pointer" src = {assets.cross_icon} alt="" /> 
                                 </span>
                             )
                         }
